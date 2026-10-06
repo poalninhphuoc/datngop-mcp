@@ -8,7 +8,7 @@ Cho công cụ AI (Claude, GPT) **tìm tài sản so sánh (TSSS), kiểm tra v�
 |---|---|---|
 | **Backend** | `https://api.datngop.com/api` (`datngop-be`) | Khoá API hạn chế quyền; route tra cứu/kiểm tra TSSS; nhập tin vào hàng chờ duyệt; ghi nhật ký |
 | **Trang quản lý khoá** | Web → Hệ thống → *Khoá API cho AI/MCP* (`/he-thong/khoa-api`) | Admin tạo / thu hồi khoá, xem nhật ký từng khoá |
-| **MCP server** | `datngop-mcp` (stdio) — phát hành dạng file đơn `datngop-mcp.mjs`, gói npm hoặc mã nguồn | Cho Claude Desktop / Claude Code gọi 7 công cụ |
+| **MCP server** | `datngop-mcp` (stdio) — repo công khai `github.com/poalninhphuoc/datngop-mcp`; cài bằng `npx` từ GitHub, file đơn `datngop-mcp.mjs`, gói npm hoặc mã nguồn | Cho Claude Desktop / Claude Code gọi 7 công cụ |
 | **GPT Action** | `openapi-ai-tsss.yaml` | Cho Custom GPT gọi cùng API |
 | **Bộ mẫu test** | `datngop-mcp/mau-test` | Dữ liệu có đáp án, 3 bài test, script kiểm tra nhanh |
 
@@ -47,7 +47,7 @@ Cho công cụ AI (Claude, GPT) **tìm tài sản so sánh (TSSS), kiểm tra v�
 | 3 | **Build + deploy web** (sau backend — rewrite `/api/*` cố định lúc build) | Người vận hành |
 | 4 | Tạo tài khoản nhân viên riêng cho AI (vai trò User, chỉ quyền bài đăng xem + thêm) | Admin |
 | 5 | Vào trang **Khoá API cho AI/MCP** → *Tạo khoá* → chép khoá (chỉ hiện một lần) | Admin |
-| 6 | Cài MCP trên máy người dùng: nhận **file đơn `datngop-mcp.mjs`** (chỉ cần Node ≥ 20), cấu hình Claude/GPT theo hướng dẫn hoặc đưa file cấu hình tải từ trang quản lý khoá cho AI tự cài | Người dùng AI |
+| 6 | Cài MCP trên máy người dùng: chỉ cần **Node ≥ 20**, cấu hình client chạy `npx -y github:poalninhphuoc/datngop-mcp` (không cần tải file hay biết đường dẫn) — hoặc đưa file cấu hình tải từ trang quản lý khoá cho AI tự cài | Người dùng AI |
 | 7 | Chạy `python3 kiem_tra_nhanh.py`, rồi bài test 1 → 3 → 2 | Người dùng AI |
 | 8 | Xong đợt test: **thu hồi khoá thử**, tạo khoá dùng thật hiệu lực phù hợp | Admin |
 

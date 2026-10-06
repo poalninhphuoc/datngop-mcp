@@ -4,7 +4,7 @@ MCP server (stdio) để Claude (Desktop, Code, hoặc client MCP bất kỳ) **
 
 - Phần BE (API, khoá, bảo mật, vận hành): [`../datngop-be/docs/ket-noi-ai-api.md`](../datngop-be/docs/ket-noi-ai-api.md)
 - **Bộ mẫu test với Claude và GPT** (dữ liệu có đáp án, 3 bài test, script kiểm tra nhanh, schema Custom GPT): [`mau-test/README.md`](mau-test/README.md)
-- **PDF tổng hợp toàn bộ tài liệu tích hợp** (17 trang): `huong-dan/huong-dan-tich-hop-ai-mcp.pdf` — xuất lại bằng `npm run pdf` (cần Chrome; đặt `CHROME=` nếu không ở vị trí macOS mặc định)
+- Tổng quan tích hợp (kiến trúc, luồng làm việc, các bước đưa vào sử dụng, trang quản lý khoá): [`huong-dan/tong-quan-tich-hop.md`](huong-dan/tong-quan-tich-hop.md)
 - Quy trình cho AI (dán làm hướng dẫn dự án): [`huong-dan/quy-trinh-tim-tsss.md`](huong-dan/quy-trinh-tim-tsss.md) — cũng có sẵn dạng prompt `quy_trinh_tim_tsss` của server này.
 
 ## Cách hoạt động
@@ -37,36 +37,36 @@ AI chỉ **đọc hiểu tin và chọn đúng danh mục**; mọi phép tính d
 **Tạo bảng + tài khoản + khoá** theo `datngop-be/docs/ket-noi-ai-api.md` mục 2 (bảng `khoa_api` là thay đổi DB cần duyệt; tài khoản bot chỉ cấp quyền `batDongSanBaiDang` xem + thêm). Khoá tạo ở trang web **Hệ thống → Khoá API cho AI/MCP**; trang này có nút **tải file hướng dẫn cho AI** để đưa cho AI tự cấu hình.
 
 ### B. Cài MCP trên máy người dùng (máy khác cũng được)
-Máy chỉ cần **Node ≥ 20** (`node -v`; chưa có thì cài từ nodejs.org). Chọn một cách:
+Repo công khai: **https://github.com/poalninhphuoc/datngop-mcp**. Máy chỉ cần **Node ≥ 20** (`node -v`; chưa có thì cài từ nodejs.org). Chọn một cách:
 
 | Cách | Dành cho | Các bước |
 |---|---|---|
-| **1. File đơn `datngop-mcp.mjs`** (khuyến nghị) | Người dùng thường — không cần repo, không `npm install` | Nhận file `datngop-mcp.mjs` (764 KB) → lưu vào một thư mục cố định, VD `~/datngop/` → cấu hình client trỏ tới nó (mục C) |
-| **2. Gói npm** | Máy có npm, muốn lệnh `datngop-mcp` | `npm install -g <tệp datngop-mcp-0.1.0.tgz>` (hoặc từ git/npm registry nếu bạn đưa lên) → lệnh `datngop-mcp`; cấu hình client `"command": "datngop-mcp"` |
-| **3. Từ mã nguồn** | Lập trình viên | `git clone <repo datngop-mcp>` → `cd datngop-mcp && npm install` (tự build nhờ `prepare`) → chạy `node dist/index.js` |
+| **1. `npx` từ GitHub** (khuyến nghị) | Mọi người — không tải gì, không cần biết đường dẫn | Chỉ cần cấu hình client chạy `npx -y github:poalninhphuoc/datngop-mcp` (mục C). Lần đầu mất ~10–15 giây để tải và build, các lần sau dùng bản đã lưu đệm. **Đã thử cài và chạy thật từ GitHub.** |
+| **2. File đơn `datngop-mcp.mjs`** (764 KB) | Máy không có npx / không tới được GitHub | Nhận file → lưu vào thư mục cố định → cấu hình `node /đường/dẫn/datngop-mcp.mjs` |
+| **3. Từ mã nguồn** | Lập trình viên | `git clone https://github.com/poalninhphuoc/datngop-mcp` → `cd datngop-mcp && npm install` (tự build nhờ `prepare`) → `node dist/index.js` |
 
-**Người xây dựng tạo bản phát hành (làm ở máy có repo):**
+**Cố định phiên bản (nên làm khi dùng thật).** `npx github:…` lấy mã mới nhất của nhánh `main`; ai có quyền ghi vào repo là kiểm soát được đoạn mã chạy cùng khoá API của người dùng. Để chắc chắn, tạo tag (VD `git tag v0.1.0 && git push --tags`) rồi cấu hình `github:poalninhphuoc/datngop-mcp#v0.1.0` (hoặc `#<mã commit>`), và chỉ nâng tag khi đã xem lại thay đổi.
+
+**Tạo bản phát hành (người xây dựng, ở máy có repo):**
 ```bash
 cd datngop-mcp && npm install
-npm run bundle      # → dist-bundle/datngop-mcp.mjs  (file đơn: gồm cả SDK + quy trình, đã thử chạy ở thư mục trống)
-npm pack            # → datngop-mcp-0.1.0.tgz        (gói npm, ~15 KB, đã thử cài ở thư mục khác)
 npm test            # 26 test, không cần BE chạy
+npm run bundle      # → dist-bundle/datngop-mcp.mjs  (cách 2: gồm cả SDK + quy trình, đã thử chạy ở thư mục trống)
+npm pack            # → datngop-mcp-0.1.0.tgz        (gói npm ~15 KB, đã thử cài ở thư mục khác)
 ```
-Gửi file `datngop-mcp.mjs` (hoặc `.tgz`) cho người dùng qua kênh bạn tin (Drive, Zalo, GitHub Releases…). **File không chứa khoá hay bí mật** — khoá do từng người nhận riêng từ Admin. Mỗi người/máy nên dùng **một khoá riêng** để thu hồi và đối soát nhật ký độc lập.
+Có thể đính `datngop-mcp.mjs` vào **GitHub Releases** của repo để cách 2 có nơi tải. Mã nguồn **không chứa khoá hay bí mật** — khoá do từng người nhận riêng từ Admin (trang *Hệ thống → Khoá API cho AI/MCP*); mỗi người/máy nên dùng **một khoá riêng** để thu hồi và đối soát nhật ký độc lập.
 
-> Đã kiểm thử: chạy file đơn ở thư mục không có `node_modules` (đủ 7 tool, prompt, gọi được BE) và cài `.tgz` ở thư mục khác (lệnh `datngop-mcp` chạy). **Chưa thử** cài thẳng từ GitHub (`npx github:…`) vì repo chưa được đẩy lên.
+## C. Cấu hình client
 
-## Cấu hình client
-
-Đường dẫn tới MCP **luôn là đường dẫn tuyệt đối trên máy của người dùng**. `DATNGOP_API_URL` là gốc API **có `/api`** — production là **`https://api.datngop.com/api`** (cũng là mặc định nếu bỏ trống); thử cục bộ thì đặt `http://localhost:4000/api`. Dưới đây dùng cách 1 (file đơn); cách 2 thay `node …/datngop-mcp.mjs` bằng `datngop-mcp`; cách 3 thay bằng `node …/datngop-mcp/dist/index.js`.
+`DATNGOP_API_URL` là gốc API **có `/api`** — production là **`https://api.datngop.com/api`** (cũng là mặc định nếu bỏ trống); thử cục bộ thì đặt `http://localhost:4000/api`. Ví dụ dưới dùng cách 1 (`npx`). Cách 2: thay lệnh bằng `node /đường/dẫn/tuyệt/đối/datngop-mcp.mjs`; cách 3: `node …/datngop-mcp/dist/index.js`.
 
 **Claude Desktop** — sửa `~/Library/Application Support/Claude/claude_desktop_config.json` (Windows: `%APPDATA%\Claude\claude_desktop_config.json`), rồi khởi động lại Claude:
 ```json
 {
   "mcpServers": {
     "datngop": {
-      "command": "node",
-      "args": ["/Users/<tên-bạn>/datngop/datngop-mcp.mjs"],
+      "command": "npx",
+      "args": ["-y", "github:poalninhphuoc/datngop-mcp"],
       "env": {
         "DATNGOP_API_URL": "https://api.datngop.com/api",
         "DATNGOP_API_KEY": "dnk_…"
@@ -75,18 +75,22 @@ Gửi file `datngop-mcp.mjs` (hoặc `.tgz`) cho người dùng qua kênh bạn 
   }
 }
 ```
+Báo lỗi `spawn npx ENOENT` (Claude Desktop không thấy Node trong PATH) → đổi `"command"` thành đường dẫn tuyệt đối của `npx` (`which npx`) hoặc dùng cách 2.
 
 **Claude Code** (terminal):
 ```bash
 claude mcp add datngop --scope user \
   --env DATNGOP_API_URL=https://api.datngop.com/api \
   --env DATNGOP_API_KEY=dnk_… \
-  -- node /Users/<tên-bạn>/datngop/datngop-mcp.mjs
+  -- npx -y github:poalninhphuoc/datngop-mcp
 claude mcp list        # kiểm tra datngop ở trạng thái connected
 ```
 (`--scope user` lưu vào cấu hình cá nhân của bạn, **không** vào repo. Đừng dùng `--scope project` với khoá thật vì sẽ ghi vào `.mcp.json` dễ bị commit.)
 
 > Claude trên web/di động (claude.ai) chỉ nối được MCP **từ xa** (HTTP) — server này là stdio cục bộ nên chưa dùng được ở đó. Cần thì làm thêm cổng HTTP + xác thực riêng.
+
+## Câu hỏi mẫu sau khi tích hợp thành công
+Hộp thoại hiện ra sau khi **tạo khoá** (trang *Hệ thống → Khoá API cho AI/MCP*) có mục *Câu hỏi mẫu* (nút Chép) và cùng nội dung nằm trong file `.md` tải về: kiểm tra kết nối, quy tắc phân loại đường, tra địa chỉ/giá Nhà nước, **kiểm tra TSSS có đáp án sẵn** (B = 87.702.703 · C = 66.748.879 · D = 76.124.402 đ/m², trung vị 76.124.402), tìm tin thật (chỉ chạy thử) và thử bắt AI làm điều không được phép. Không câu nào ghi dữ liệu. Bộ test đầy đủ hơn nằm ở `mau-test/`.
 
 ## Dùng
 
