@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: DatNgop — tra cứu & nhập TSSS cho AI
+  version: 1.0.0
+  description: >-
+    API hạn chế quyền cho công cụ AI (khoá API `x-khoa-api`). Chỉ tra cứu/tính toán và nhập tin vào HÀNG CHỜ DUYỆT.
+    Không có thao tác sửa/xoá. Nhập tin phải chạy thử (kiemTra=true) trước rồi gửi đúng dauVan.
+servers:
+  - url: https://api.datngop.com
+security:
+  - KhoaApi: []
+components:
+  securitySchemes:
+    KhoaApi:
+      type: apiKey
+      in: header
+      name: x-khoa-api
+      description: Khoá API do Admin tạo ở trang Hệ thống → Khoá API cho AI/MCP (bắt đầu bằng dnk_).
+  schemas:
+    Loi:
+      type: object
+      properties:
+        error:
+          description: Câu tiếng Việt mô tả lỗi (hoặc danh sách câu khi sai đầu vào).
+    Tstd:
+      type: object
+      required: [loaiDat, loaiDuong]
+      properties:
+        loaiDat: { type: string, description: Đúng tên trong danh mục (thamChieuDanhMuc) }
+        loaiDuong: { type: string, description: Đúng tên trong danh mục }
+        giaNhaNuoc: { type: number, description: Giá đất ở Nhà nước đ/m² của đoạn đường TSTD }
+        lat: { type: number }
+        lng: { type: number }
+    Tsss:
+      type: object
+      required: [ma, dienTichDat, loaiDat, loaiDuong]
+      properties:
+        ma: { type: string, maxLength: 60 }
+        gia: { type: [number, "null"], description: Giá bán tổng (đ); thiếu thì phải có donGiaDat }
+        donGiaDat: { type: [number, "null"], description: Đơn giá đất/m² nếu tin chỉ ghi đơn giá }
+        dienTichDat: { type: number, description: Diện tích ĐẤT m² }
+        soTang: { type: [number, "null"] }
+        dienTichSuDung: { type: [number, "null"], description: Tổng diện tích sàn nếu tin ghi rõ }
+        giaTriCongTrinh: { type: [number, "null"] }
+        loaiCongTrinh: { type: [string, "null"] }
+        dienTichDatO: { type: [number, "null"], description: Đất hỗn hợp — phần đã là đất ở (m²) }
+        loaiDat: { type: string, description: Loại đất THẬT của tin }
+        loaiDuong: { type: string, description: Loại đường THẬT của tin (đã trừ 0,5m) }
+        giaNhaNuocTuyenTin: { type: [number, "null"] }
+        ngayDang: { type: [string, "null"], description: ISO YYYY-MM-DD }
+    KetQuaChung:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: true
+paths:
+  /api/bat-dong-san/ai-tsss/tham-chieu:
+    get:
+      operationId: thamChieuDanhMuc
+      summary: Danh mục hợp lệ để điền bài đăng (kèm hệ số); q để tìm phường/xã mới
+      parameters:
+        - { name: q, in: query, schema: { type: string, maxLength: 100 }, description: Tên phường/xã mới }
+        - { name: gioiHan, in: query, schema: { type: integer, minimum: 1, maximum: 50 } }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/KetQuaChung" } } } }
+  /api/bat-dong-san/ai-tsss/dia-chi:
+    get:
+      operationId: traDiaChi
+      summary: Toạ độ → phường/xã mới và xã/phường/quận/tỉnh cũ
+      parameters:
+        - { name: lat, in: query, required: true, schema: { type: number, minimum: -90, maximum: 90 } }
+        - { name: lng, in: query, required: true, schema: { type: number, minimum: -180, maximum: 180 } }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/KetQuaChung" } } } }
+  /api/bat-dong-san/ai-tsss/gia-nha-nuoc:
+    get:
+      operationId: traGiaNhaNuoc
+      summary: Mốc giá đất Nhà nước (đ/m², mặc định đường 6–8m) quanh toạ độ hoặc theo tên đường
+      parameters:
+        - { name: lat, in: query, schema: { type: number } }
+        - { name: lng, in: query, schema: { type: number } }
+        - { name: banKinhM, in: query, schema: { type: number, minimum: 50, maximum: 2000 } }
+        - { name: tenDuong, in: query, schema: { type: string } }
+        - { name: phuongXa, in: query, schema: { type: string } }
+        - { name: gioiHan, in: query, schema: { type: integer, minimum: 1, maximum: 30 } }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/KetQuaChung" } } } }
+  /api/bat-dong-san/ai-tsss/loai-duong:
+    get:
+      operationId: phanLoaiDuong
+      summary: Độ rộng đường ghi trong tin → loại đường (tự trừ 0,5m)
+      parameters:
+        - { name: doRong, in: query, required: true, schema: { type: number, minimum: 0.1, maximum: 200 } }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/KetQuaChung" } } } }
+  /api/bat-dong-san/ai-tsss/kiem-tra-tsss:
+    post:
+      operationId: kiemTraTsss
+      summary: Tính đơn giá đất gốc + lọc khoảng giá + trung vị ±20% cho cả lô TSSS (không ghi dữ liệu)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tstd, tsss]
+              properties:
+                tstd: { $ref: "#/components/schemas/Tstd" }
+                tsss: { type: array, minItems: 1, maxItems: 100, items: { $ref: "#/components/schemas/Tsss" } }
+                ngayThamChieu: { type: string }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/KetQuaChung" } } } }
+        "400": { description: Sai đầu vào, content: { application/json: { schema: { $ref: "#/components/schemas/Loi" } } } }
+  /api/bat-dong-san/bai-dang/import:
+    post:
+      operationId: nhapBaiDang
+      summary: Chạy thử (kiemTra=true, KHÔNG ghi) hoặc nhập thật vào HÀNG CHỜ DUYỆT (cần dauVan)
+      description: >-
+        Bước 1: gửi rows + kiemTra=true → nhận errors, hopLe, dauVan. Sửa lỗi và chạy lại tới khi hết lỗi.
+        Bước 2 (CÓ GHI DỮ LIỆU, chỉ khi người dùng đồng ý rõ ràng): gửi ĐÚNG các rows đó + dauVan (không gửi kiemTra).
+        Tối đa 50 dòng. Tin vào hàng chờ duyệt, chưa lên bản đồ công khai.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [rows]
+              properties:
+                rows:
+                  type: array
+                  minItems: 1
+                  maxItems: 50
+                  description: Mỗi dòng là đối tượng với khoá = đúng tiêu đề cột file mẫu ("Địa chỉ *", "Vĩ độ *", "Loại đất *"…)
+                  items: { type: object, additionalProperties: true }
+                kiemTra: { type: boolean, description: true = chạy thử, không ghi }
+                dauVan: { type: string, description: Bắt buộc khi nhập thật — dauVan của lần chạy thử ngay trước }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/KetQuaChung" } } } }
+        "400": { description: Lỗi đầu vào / thiếu hoặc sai dauVan, content: { application/json: { schema: { $ref: "#/components/schemas/Loi" } } } }
+        "403": { description: Khoá không có phạm vi / tài khoản thiếu quyền, content: { application/json: { schema: { $ref: "#/components/schemas/Loi" } } } }

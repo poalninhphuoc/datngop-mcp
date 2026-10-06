@@ -1,0 +1,282 @@
+{
+  "_ghiChu": "DỮ LIỆU THỬ lấy từ sheet \"Kiểm tra tính toán\" của file mẫu (hẻm 2549/13/11 Phạm Thế Hiển). Văn bản tin là bản soạn lại cho bài test, KHÔNG phải nguyên văn tin gốc. Không nhập thật vào hệ thống trừ khi muốn thử luồng hàng chờ duyệt.",
+  "tstd": {
+    "loaiDat": "Đất thổ cư",
+    "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+    "giaNhaNuoc": 56700000
+  },
+  "tsss": [
+    {
+      "ma": "A",
+      "gia": 4500000000,
+      "dienTichDat": 35,
+      "soTang": 3,
+      "dienTichSuDung": 91.8,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-09-21"
+    },
+    {
+      "ma": "B",
+      "gia": 3800000000,
+      "dienTichDat": 37,
+      "soTang": 3,
+      "dienTichSuDung": 111,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-09-21"
+    },
+    {
+      "ma": "C",
+      "gia": 3200000000,
+      "dienTichDat": 44.6,
+      "soTang": 1,
+      "dienTichSuDung": 44.6,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-08-29"
+    },
+    {
+      "ma": "D",
+      "gia": 3600000000,
+      "dienTichDat": 41.8,
+      "soTang": 2,
+      "dienTichSuDung": 83.6,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-09-14"
+    },
+    {
+      "ma": "E",
+      "gia": 4950000000,
+      "dienTichDat": 71,
+      "soTang": 2,
+      "dienTichSuDung": 112,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-09-15"
+    },
+    {
+      "ma": "F",
+      "gia": 4500000000,
+      "dienTichDat": 63,
+      "soTang": 2,
+      "dienTichSuDung": 126,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=3m - <4m (đường hẻm xe hơi nhỏ)",
+      "ngayDang": "2026-09-27"
+    },
+    {
+      "ma": "G",
+      "gia": 2750000000,
+      "dienTichDat": 30,
+      "soTang": 3,
+      "dienTichSuDung": 90,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-09-27"
+    },
+    {
+      "ma": "H",
+      "gia": 4380000000,
+      "dienTichDat": 45,
+      "soTang": 3,
+      "dienTichSuDung": 135,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=3m - <4m (đường hẻm xe hơi nhỏ)",
+      "ngayDang": "2026-09-27"
+    },
+    {
+      "ma": "I",
+      "gia": 3800000000,
+      "dienTichDat": 58,
+      "soTang": 1,
+      "dienTichSuDung": 58,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=4m - <6m (đường hẻm xe hơi/ hẻm xe tải)",
+      "ngayDang": "2026-09-27"
+    },
+    {
+      "ma": "J",
+      "gia": 7800000000,
+      "dienTichDat": 100,
+      "soTang": 4,
+      "dienTichSuDung": 400,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "ngayDang": "2026-09-27"
+    },
+    {
+      "ma": "K",
+      "gia": 3950000000,
+      "dienTichDat": 97,
+      "soTang": 2,
+      "dienTichSuDung": 194,
+      "loaiDat": "Đất thổ cư",
+      "loaiDuong": "Đường rộng >=3m - <4m (đường hẻm xe hơi nhỏ)",
+      "ngayDang": "2026-09-23"
+    }
+  ],
+  "tin": [
+    {
+      "ma": "A",
+      "diaChi": "Nhà hẻm 2549 Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-ban-tai-hem-2549-pham-the-hien-p7-q8-pr30940307",
+      "ngayDang": "2026-09-21",
+      "doRongGhiTrongTin": null,
+      "vanBan": "Bán nhà hẻm 2549 Phạm Thế Hiển, P.7, Q.8. Ngang 3,5m, tổng diện tích sử dụng 91,8m², 3 tầng, đất 35m² sổ hồng riêng. Giá 4 tỷ 5. Hẻm thông thoáng, ra mặt tiền vài bước."
+    },
+    {
+      "ma": "B",
+      "diaChi": "Nhà hẻm Phạm Thế Hiển gần cầu Bà Tàng, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-ban-gan-cau-ba-tang-duong-pham-the-hien-chinh-chu-dang-o-pr30097473",
+      "ngayDang": "2026-09-21",
+      "doRongGhiTrongTin": null,
+      "vanBan": "Chính chủ bán nhà hẻm Phạm Thế Hiển gần cầu Bà Tàng, đang ở. Đất 37m², nhà 1 trệt 2 lầu sân thượng, DTSD 111m². Giá 3 tỷ 8, sổ hồng riêng."
+    },
+    {
+      "ma": "C",
+      "diaChi": "Nhà 2805/45 Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-pham-the-hien-chinh-chu-can-ban-pr31069500",
+      "ngayDang": "2026-08-29",
+      "doRongGhiTrongTin": null,
+      "vanBan": "Chính chủ cần bán nhà 2805/45 Phạm Thế Hiển, nhà cấp 4 một tầng, diện tích 44,6m² (đất và sàn), sổ hồng riêng. Giá 3,2 tỷ, hẻm."
+    },
+    {
+      "ma": "D",
+      "diaChi": "Nhà hẻm 3m Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-pham-the-hien-p7-q8-2pn-dt-45m10m-shr-ko-qh-hem-3m-gia-36-ty--0901-440--pr30391887",
+      "ngayDang": "2026-09-14",
+      "doRongGhiTrongTin": 3,
+      "vanBan": "Nhà hẻm 3m Phạm Thế Hiển, P.7 Q.8. DT 4,5m x 10m (công nhận 41,8m²), 1 trệt 1 lầu, 2PN, SHR, không quy hoạch. Giá 3,6 tỷ. Liên hệ 0901 440 xxx."
+    },
+    {
+      "ma": "E",
+      "diaChi": "Nhà hẻm 3m Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-pham-the-hien-p7-q8-dt-5m--15m-hem-3m-shr-khong-qh-1-lau-3pn-gia-495-ty-0901-440--pr29671919",
+      "ngayDang": "2026-09-15",
+      "doRongGhiTrongTin": 3,
+      "vanBan": "Bán nhà hẻm 3m Phạm Thế Hiển P.7 Q.8, 5m x 15m, diện tích đất 71m², trệt + 1 lầu tổng sàn 112m², 3PN, SHR không quy hoạch. Giá 4,95 tỷ."
+    },
+    {
+      "ma": "F",
+      "diaChi": "Nhà hẻm 3,5m Phạm Thế Hiển gần Green River, Phường 7 (cũ), Quận 8",
+      "link": "https://alonhadat.com.vn/pham-the-hien-p-binh-dong-quan-8-4-5x14-4pn-nhinh-4-ty-tl-19032702.html",
+      "ngayDang": "2026-09-27",
+      "doRongGhiTrongTin": 3.5,
+      "vanBan": "TIÊU ĐỀ TRANG DANH SÁCH: Nhà 4 tầng hẻm 3,5m Phạm Thế Hiển gần Green River. --- MÔ TẢ CHI TIẾT: nhà 4,5x14 = 63m² đất, kết cấu 1 trệt 1 lầu (2 tầng), 4PN, hẻm xe hơi 3,5m. Giá 4,5 tỷ thương lượng."
+    },
+    {
+      "ma": "G",
+      "diaChi": "Nhà hẻm 3m Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://alonhadat.com.vn/ban-nha-hem-pham-the-hien-p-7-q-8-dt-4-x-7-5-nha-xay-2-lau-2-ty-75--19046778.html",
+      "ngayDang": "2026-09-27",
+      "doRongGhiTrongTin": 3,
+      "vanBan": "Bán nhà hẻm Phạm Thế Hiển P.7 Q.8, 4m x 7,5m = 30m², nhà xây trệt 2 lầu (3 tầng). Hẻm 3m. Giá 2 tỷ 750."
+    },
+    {
+      "ma": "H",
+      "diaChi": "Nhà hẻm 4m Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://alonhadat.com.vn/ban-nha-hem-rong-pham-the-hien-p-7-q-8-dt-3-7-x-13-nha-xay-2-lau-4-ty-6--19013800.html",
+      "ngayDang": "2026-09-27",
+      "doRongGhiTrongTin": 4,
+      "vanBan": "Nhà hẻm rộng 4m Phạm Thế Hiển P.7 Q.8, 3,7m x 13m (đất 45m²), trệt 2 lầu (3 tầng), tổng sàn 135m². Giá 4 tỷ 380."
+    },
+    {
+      "ma": "I",
+      "diaChi": "Nhà hẻm xe tải 5m Phạm Thế Hiển gần Green River, Phường 7 (cũ), Quận 8",
+      "link": "https://alonhadat.com.vn/ban-nha-pham-the-hien-p-binh-dong-quan-8-hem-xe-tai-5m-58m2-nhinh-4-ty-tl-19066428.html",
+      "ngayDang": "2026-09-27",
+      "doRongGhiTrongTin": 5,
+      "vanBan": "Bán nhà Phạm Thế Hiển, hẻm xe tải 5m, đất 58m², nhà cấp 4 một tầng. Giá 3 tỷ 8 thương lượng."
+    },
+    {
+      "ma": "J",
+      "diaChi": "Nhà hẻm 3m Phạm Thế Hiển gần chợ Bình Điền, Phường 7 (cũ), Quận 8",
+      "link": "https://alonhadat.com.vn/-nha-moi-o-ngay-100m-5-20-4-tang-4pn-pham-the-hien-quan-8-7-8-ty--18051658.html",
+      "ngayDang": "2026-09-27",
+      "doRongGhiTrongTin": 3,
+      "vanBan": "Nhà mới ở ngay, 5m x 20m = 100m² đất, 4 tầng, tổng sàn 400m², 4PN, hẻm 3m gần chợ Bình Điền (xa khu vực mục tiêu khoảng 1,5–2km). Giá 7 tỷ 8."
+    },
+    {
+      "ma": "K",
+      "diaChi": "Nhà hẻm Phạm Thế Hiển gần giáo xứ Bình An, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-97m--4-phong-ngu--phap-ly-hoan-chinh--nhinh-3-ty-pr31107656",
+      "ngayDang": "2026-09-23",
+      "doRongGhiTrongTin": 3.5,
+      "vanBan": "Nhà 97m² đất, 4 phòng ngủ, pháp lý hoàn chỉnh, 1 trệt 1 lầu tổng sàn 194m². Hẻm xe hơi rộng 3,5m gần giáo xứ Bình An. Giá 3 tỷ 950."
+    },
+    {
+      "ma": "D2",
+      "diaChi": "Nhà hẻm 3m Phạm Thế Hiển, Phường 7 (cũ), Quận 8",
+      "link": "https://bds68.com.vn/ban-nha-rieng/ho-chi-minh/quan-8/duong-pham-the-hien/nha-pham-the-hien-p7-q8-hem-3m-shr-pr30636038",
+      "ngayDang": "2026-09-14",
+      "doRongGhiTrongTin": 3,
+      "vanBan": "Nhà hẻm 3m Phạm Thế Hiển P.7 Q.8, 4,5x10 (41,8m² công nhận), 1 trệt 1 lầu 2PN, SHR không quy hoạch, giá 3,6 tỷ. Liên hệ 0901 440 xxx.",
+      "trungVoi": "D"
+    }
+  ],
+  "ketQuaMongDoi": {
+    "giu": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "G"
+    ],
+    "loai": [
+      "A",
+      "F",
+      "H",
+      "I",
+      "J",
+      "K"
+    ],
+    "trungVi": 76124402,
+    "khoangHopLy": {
+      "san": 68040000,
+      "tran": 311850000
+    },
+    "donGiaDat": {
+      "A": 115457143,
+      "B": 87702703,
+      "C": 66748879,
+      "D": 76124402,
+      "E": 61830986,
+      "F": 61428571,
+      "G": 76666667,
+      "H": 82333333,
+      "I": 60517241,
+      "J": 58000000,
+      "K": 30721649
+    },
+    "loaiDuongDungCuaTin": {
+      "A": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "B": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "C": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "D": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "E": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "F": "Đường rộng >=3m - <4m (đường hẻm xe hơi nhỏ)",
+      "G": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "H": "Đường rộng >=3m - <4m (đường hẻm xe hơi nhỏ)",
+      "I": "Đường rộng >=4m - <6m (đường hẻm xe hơi/ hẻm xe tải)",
+      "J": "Đường rộng >=2m - <3m (đường hẻm xe ba gác, hẻm)",
+      "K": "Đường rộng >=3m - <4m (đường hẻm xe hơi nhỏ)"
+    },
+    "soTangDung": {
+      "B": 3,
+      "F": 2
+    },
+    "tinTrung": {
+      "D2": "D"
+    },
+    "lyDoLoai": {
+      "A": "lệch trung vị +51,7%",
+      "F": "lệch trung vị -44,1%",
+      "H": "lệch trung vị -25,1%",
+      "I": "lệch trung vị -55,3%",
+      "J": "lệch trung vị -23,8%",
+      "K": "giá chuẩn dưới sàn 1,2×GNN"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "datngop-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP server cho DatNgop: cho công cụ AI tra cứu giá Nhà nước, kiểm tra TSSS và nhập tin vào hàng chờ duyệt (qua khoá API hạn chế quyền).",
+  "type": "module",
+  "bin": {
+    "datngop-mcp": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/*.test.ts",
+    "pdf": "node huong-dan/xuat-pdf.mjs",
+    "nhung": "node scripts/nhung-quy-trinh.mjs",
+    "prebuild": "node scripts/nhung-quy-trinh.mjs",
+    "pretest": "node scripts/nhung-quy-trinh.mjs",
+    "bundle": "node scripts/nhung-quy-trinh.mjs && esbuild src/index.ts --bundle --platform=node --format=esm --target=node20 --minify --legal-comments=none --banner:js=\"import { createRequire as __cr } from 'node:module'; const require = __cr(import.meta.url);\" --outfile=dist-bundle/datngop-mcp.mjs",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "esbuild": "^0.28.2",
+    "marked": "^18.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
